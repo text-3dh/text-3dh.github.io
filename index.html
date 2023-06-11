@@ -1,0 +1,328 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <title>T3H</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+        
+        body {
+            width: 1200px;
+            margin: auto;
+            font-family: 'Nunito';
+            font-size: 18px;
+        }
+        a {
+            color: #1772d0;
+            text-decoration: none;
+        }
+        a:focus, a:hover {
+            color: #f09228;
+            text-decoration: none;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+        }
+    </style>
+</head>
+<body>
+    <br />
+    <center><h1><B>Text-guided 3D Human Generation from 2D Collections</B></h1></center>
+    <br />
+    <center><img src="./cch.jpg" style="width: 900px;" /></center>
+    <br />
+    <center>
+        <h2>Abstract</h2>
+        <p style="width: 650px; margin: 0 auto; text-align: justify; text-justify: inter-ideograph;">3D human modeling has been widely used for engaging interaction in gaming, film, and animation. The customization of these characters is crucial for creativity and scalability, which highlights the importance of controllability. In this work, we introduce Text-guided 3D Human Generation (<tt>T3H</tt>), where a model is to generate a 3D human, guided by the fashion description. There are two goals: 1) the 3D human should render articulately, and 2) its outfit is controlled by the given text. To address this <tt>T3H</tt> task, we propose Compositional Cross-modal Human (CCH). CCH adopts cross-modal attention to fuse compositional human rendering with the extracted fashion semantics. Each human body part perceives relevant textual guidance as its visual patterns. We incorporate the human prior and semantic discrimination to enhance 3D geometry transformation and fine-grained consistency, enabling it to learn from 2D collections for data efficiency. We conduct evaluations on DeepFashion and SHHQ with diverse fashion attributes covering the shape, fabric, and color of upper and lower clothing. Extensive experiments demonstrate that CCH achieves superior results for <tt>T3H</tt> with high efficiency.</p>
+    </center>
+    <br /> <hr />
+    <center>
+        <h2>Qualitative Results</h2>
+        <p style="font-size: 18px;">👇 press the tab for different datasets</p>
+    </center>
+    <center>
+        <ul class="nav nav-tabs nav-justified" style="width: 1100px;">
+            <li class="active"><a data-toggle="tab" href="#nav_df">DeepFashion</a></li>
+            <li><a data-toggle="tab" href="#nav_shhq">SHHQ</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="nav_df" class="tab-pane fade in active">
+                <div id="carousel_df" class="carousel slide" data-interval="false" style="width: 1100px;">
+                    <ol class="carousel-indicators fade">
+                        <li data-target="#carousel_df" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel_df" data-slide-to="1"></li>
+                        <li data-target="#carousel_df" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <br />
+                            <span style="display: inline-block; width: 250px;">
+                                <p>She is wearing a floral-patterned tank top with solid-colored three-point shorts</p>
+                                <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/df_0.gif" style="width: 180px;" /></center>
+                            </span>
+                            <span style="display: inline-block; width: 250px;">
+                                <p>He is sporting a short-sleeved cotton t-shirt and graphic-patterned medium shorts</p>
+                                <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/df_1.gif" style="width: 180px;" /></center>
+                            </span>
+                            <span style="display: inline-block; width: 250px;">
+                                <p>This lady is dressed in<br />a solid-colored sleeveless<br />with long denim pants</p>
+                                <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/df_2.gif" style="width: 180px;" /></center>
+                            </span>
+                            
+                            <span style="display: inline-block; width: 250px;">
+                                <p>The woman is wearing a striped cotton shirt, paired with long cotton pants</p>
+                                <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/df_3.gif" style="width: 180px;" /></center>
+                            </span>
+                        </div>
+                        <div class="item">
+                            <br />
+                            <span style="display: inline-block; width: 250px;">
+                                <p>This man is sporting a long-sleeved sweater with solid-colored cotton trousers</p>
+                                <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/df_4.gif" style="width: 180px;" /></center>
+                            </span>
+                            <span style="display: inline-block; width: 250px;">
+                                <p>She is dressed in a cotton<br />sleeveless, paired with<br />solid-colored long pants</p>
+                                <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/df_5.gif" style="width: 180px;" /></center>
+                            </span>
+                            <span style="display: inline-block; width: 250px;">
+                                <p>The woman is wearing a<br />long-sleeved chiffon shirt<br />and three-point denim shorts</p>
+                                <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/df_6.gif" style="width: 180px;" /></center>
+                            </span>
+                            <span style="display: inline-block; width: 250px;">
+                                <p>She is wearing a solid-<br />colored sleeveless tank top with long denim pants</p>
+                                <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/df_7.gif" style="width: 180px;" /></center>
+                            </span>
+                        </div>
+                        <div class="item">
+                            <br />
+                            <span style="display: inline-block; width: 250px;">
+                                <p>The woman is wearing<br />a stripped t-shirt and<br />long denim pants</p>
+                                <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/df_8.gif" style="width: 180px;" /></center>
+                            </span>
+                            <span style="display: inline-block; width: 250px;">
+                                <p>She is wearing a graphic-<br />patterned sleeveless,<br />paired with long trousers</p>
+                                <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/df_9.gif" style="width: 180px;" /></center>
+                            </span>
+                            <span style="display: inline-block; width: 250px;">
+                                <p>The man is sporting a<br />solid-colored medium shirt<br />with long cotton pants</p>
+                                <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/df_10.gif" style="width: 180px;" /></center>
+                            </span>
+                            <span style="display: inline-block; width: 250px;">
+                                <p>She is dressed in a graphic-<br />patterned tank top and<br />three-point denim shorts</p>
+                                <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/df_11.gif" style="width: 180px;" /></center>
+                            </span>
+                        </div>
+                    </div>
+                    <a class="carousel-control left" href="#carousel_df" role="button" data-slide="prev" style="width: 50px; background-image: none;">
+                        <span class="glyphicon glyphicon-chevron-left" style="color: black"></span>
+                    </a>
+                    <a class="carousel-control right" href="#carousel_df" role="button" data-slide="next" style="width: 50px; background-image: none;">
+                        <span class="glyphicon glyphicon-chevron-right" style="color: black"></span>
+                    </a>
+                </div>
+            </div>
+            <div id="nav_shhq" class="tab-pane fade">
+                <div id="carousel_shhq" class="carousel slide" data-interval="false" style="width: 1100px;">
+                    <ol class="carousel-indicators fade">
+                        <li data-target="#carousel_shhq" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel_shhq" data-slide-to="1"></li>
+                        <li data-target="#carousel_shhq" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <br />
+                            <span style="display: inline-block; width: 250px;">
+                                <p>He is wearing a short-<br />sleeved cotton shirt, paired with long denim pants</p>
+                                <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/shhq_0.gif" style="width: 180px;" /></center>
+                            </span>
+                            <span style="display: inline-block; width: 250px;">
+                                <p>This lady is sporting a<br />solid-colored tank top with three-point cotton shorts</p>
+                                <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/shhq_1.gif" style="width: 180px;" /></center>
+                            </span>
+                            <span style="display: inline-block; width: 250px;">
+                                <p>The woman is wearing a floral-patterned long-sleeved sweater and long denim pants</p>
+                                <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/shhq_2.gif" style="width: 180px;" /></center>
+                            </span>
+                            
+                            <span style="display: inline-block; width: 250px;">
+                                <p>She is dressed in a long-<br />sleeved shirt, paired with solid-colored long trousers</p>
+                                <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/shhq_3.gif" style="width: 180px;" /></center>
+                            </span>
+                        </div>
+                        <div class="item">
+                            <br />
+                            <span style="display: inline-block; width: 250px;">
+                                <p>He is sporting a graphic-<br />patterned short-sleeved shirt with medium cotton shorts</p>
+                                <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/shhq_4.gif" style="width: 180px;" /></center>
+                            </span>
+                            <span style="display: inline-block; width: 250px;">
+                                <p>The woman is dressed in a short-sleeved cotton t-shirt, paired with long denim pants</p>
+                                <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/shhq_5.gif" style="width: 180px;" /></center>
+                            </span>
+                            <span style="display: inline-block; width: 250px;">
+                                <p>This man is wearing a<br />striped medium sleeve<br />and long cotton trousers</p>
+                                <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/shhq_6.gif" style="width: 180px;" /></center>
+                            </span>
+                            <span style="display: inline-block; width: 250px;">
+                                <p>She is sporting a graphic-patterned tank top with floral-patterned three-point shorts</p>
+                                <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/shhq_7.gif" style="width: 180px;" /></center>
+                            </span>
+                        </div>
+                        <div class="item">
+                            <br />
+                            <span style="display: inline-block; width: 250px;">
+                                <p>She is wearing a striped sleeveless tank top and<br />long cotton pants</p>
+                                <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/shhq_8.gif" style="width: 180px;" /></center>
+                            </span>
+                            <span style="display: inline-block; width: 250px;">
+                                <p>The man is sporting a long-sleeved knitted sweater with solid-colored long trousers</p>
+                                <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/shhq_9.gif" style="width: 180px;" /></center>
+                            </span>
+                            <span style="display: inline-block; width: 250px;">
+                                <p>He is wearing a cotton<br />shirt and solid-colored medium shorts</p>
+                                <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/shhq_10.gif" style="width: 180px;" /></center>
+                            </span>
+                            <span style="display: inline-block; width: 250px;">
+                                <p>The woman is dressed in<br />a graphic-patterned t-shirt,<br />paired with long denim pants</p>
+                                <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/shhq_11.gif" style="width: 180px;" /></center>
+                            </span>
+                        </div>
+                    </div>
+                    <a class="carousel-control left" href="#carousel_shhq" role="button" data-slide="prev" style="width: 50px; background-image: none;">
+                        <span class="glyphicon glyphicon-chevron-left" style="color: black"></span>
+                    </a>
+                    <a class="carousel-control right" href="#carousel_shhq" role="button" data-slide="next" style="width: 50px; background-image: none;">
+                        <span class="glyphicon glyphicon-chevron-right" style="color: black"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </center>
+    <br /><hr />
+    <center><h2>Pose-guided <tt>T3H</tt></h2></center>
+    <center>
+        <div id="nav_pose" class="tab-pane fade in active">
+            <div id="carousel_pose" class="carousel slide" data-interval="false" style="width: 1100px;">
+                <ol class="carousel-indicators fade">
+                    <li data-target="#carousel_pose" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel_pose" data-slide-to="1"></li>
+                    <li data-target="#carousel_pose" data-slide-to="2"></li>
+                    <li data-target="#carousel_pose" data-slide-to="3"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <br />
+                        <span style="display: inline-block; width: 250px;">
+                            <p>The woman is wearing a sleeveless tank top, paired with long denim pants</p>
+                            <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/pose_0-0.gif" style="width: 180px;" /></center>
+                        </span>
+                        <span style="display: inline-block; width: 250px;">
+                            <p>He is wearing a floral-patterned long-sleeved sweater and long trousers</p>
+                            <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/pose_1-0.gif" style="width: 180px;" /></center>
+                        </span>
+                        <span style="display: inline-block; width: 250px;">
+                            <p>She is dressed in a long-sleeved chiffon shirt with striped three-point shorts</p>
+                            <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/pose_2-0.gif" style="width: 180px;" /></center>
+                        </span>
+                        <span style="display: inline-block; width: 250px;">
+                            <p>This man is sporting<br />a short-sleeved t-shirt<br />and medium cotton pants</p>
+                            <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/pose_3-0.gif" style="width: 180px;" /></center>
+                        </span>
+                    </div>
+                    <div class="item">
+                        <br />
+                        <span style="display: inline-block; width: 250px;">
+                            <p>The woman is wearing a sleeveless tank top, paired with long denim pants</p>
+                            <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/pose_0-1.gif" style="width: 180px;" /></center>
+                        </span>
+                        <span style="display: inline-block; width: 250px;">
+                            <p>He is wearing a floral-patterned long-sleeved sweater and long trousers</p>
+                            <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/pose_1-1.gif" style="width: 180px;" /></center>
+                        </span>
+                        <span style="display: inline-block; width: 250px;">
+                            <p>She is dressed in a long-sleeved chiffon shirt with striped three-point shorts</p>
+                            <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/pose_2-1.gif" style="width: 180px;" /></center>
+                        </span>
+                        <span style="display: inline-block; width: 250px;">
+                            <p>This man is sporting<br />a short-sleeved t-shirt<br />and medium cotton pants</p>
+                            <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/pose_3-1.gif" style="width: 180px;" /></center>
+                        </span>
+                    </div>
+                    <div class="item">
+                        <br />
+                        <span style="display: inline-block; width: 250px;">
+                            <p>The woman is wearing a sleeveless tank top, paired with long denim pants</p>
+                            <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/pose_0-2.gif" style="width: 180px;" /></center>
+                        </span>
+                        <span style="display: inline-block; width: 250px;">
+                            <p>He is wearing a floral-patterned long-sleeved sweater and long trousers</p>
+                            <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/pose_1-2.gif" style="width: 180px;" /></center>
+                        </span>
+                        <span style="display: inline-block; width: 250px;">
+                            <p>She is dressed in a long-sleeved chiffon shirt with striped three-point shorts</p>
+                            <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/pose_2-2.gif" style="width: 180px;" /></center>
+                        </span>
+                        <span style="display: inline-block; width: 250px;">
+                            <p>This man is sporting<br />a short-sleeved t-shirt<br />and medium cotton pants</p>
+                            <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/pose_3-2.gif" style="width: 180px;" /></center>
+                        </span>
+                    </div>
+                    <div class="item">
+                        <br />
+                        <span style="display: inline-block; width: 250px;">
+                            <p>The woman is wearing a sleeveless tank top, paired with long denim pants</p>
+                            <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/pose_0-3.gif" style="width: 180px;" /></center>
+                        </span>
+                        <span style="display: inline-block; width: 250px;">
+                            <p>He is wearing a floral-patterned long-sleeved sweater and long trousers</p>
+                            <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/pose_1-3.gif" style="width: 180px;" /></center>
+                        </span>
+                        <span style="display: inline-block; width: 250px;">
+                            <p>She is dressed in a long-sleeved chiffon shirt with striped three-point shorts</p>
+                            <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/pose_2-3.gif" style="width: 180px;" /></center>
+                        </span>
+                        <span style="display: inline-block; width: 250px;">
+                            <p>This man is sporting<br />a short-sleeved t-shirt<br />and medium cotton pants</p>
+                            <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/pose_3-3.gif" style="width: 180px;" /></center>
+                        </span>
+                    </div>
+                </div>
+                <a class="carousel-control left" href="#carousel_pose" role="button" data-slide="prev" style="width: 50px; background-image: none;">
+                    <span class="glyphicon glyphicon-chevron-left" style="color: black"></span>
+                </a>
+                <a class="carousel-control right" href="#carousel_pose" role="button" data-slide="next" style="width: 50px; background-image: none;">
+                    <span class="glyphicon glyphicon-chevron-right" style="color: black"></span>
+                </a>
+            </div>
+        </div>
+    </center>
+    <br /><hr />
+    <center><h2>Animatable <tt>T3H</tt></h2></center>
+    <center>
+        <br />
+        <span style="display: inline-block; width: 250px;">
+            <p>The woman is wearing a floral-patterned long-sleeved sweater and long denim pants<br/>+&nbsp;walking</p>
+            <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/ani_0.gif" style="width: 180px;" /></center>
+        </span>
+        <span style="display: inline-block; width: 250px;">
+            <p>She is dressed in a long-sleeved chiffon shirt with striped three-point shorts<br/>+&nbsp;shooting basketball</p>
+            <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/ani_1.gif" style="width: 180px;" /></center>
+        </span>
+        <span style="display: inline-block; width: 250px;">
+            <p>This man is wearing a<br />striped medium sleeve<br />and long cotton trousers<br/>+&nbsp;squatting</p>
+            <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/ani_2.gif" style="width: 180px;" /></center>
+        </span>
+        <span style="display: inline-block; width: 250px;">
+            <p>She is sporting a graphic-patterned tank top with floral-patterned three-point shorts<br/>+&nbsp;kicking soccer</p>
+            <center><img src="https://raw.githubusercontent.com/text-3dh/text-3dh.github.io/main/_qual/ani_3.gif" style="width: 180px;" /></center>
+        </span>
+    </center>
+    <br />
+</body>
+</html>
